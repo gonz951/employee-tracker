@@ -19,3 +19,30 @@ const pool = new Pool(
 )
 
 pool.connect();
+
+const questions = [
+    {
+        name: 'start',
+        message: 'What would you like to start with?',
+        type: 'list',
+        choices: ['View all departments', 'View all roles', 'View all employees', 'Add department', 'Add role', 'Add employee', 'Update employee role']
+    },
+    {
+        name: 'department',
+        message: 'Enter name for the department:',
+        type: 'input'
+    },
+    {
+        name: 'role',
+        message: 'Add a name for the role:',
+        type: 'input'
+    },
+    {
+        name: 'roleSalary',
+        message: 'What is the salary of the role?',
+        type: 'input'
+    },
+    {
+        // ! ADD MORE QUESTIONS LATER
+    }
+]
