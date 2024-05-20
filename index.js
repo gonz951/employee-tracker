@@ -1,11 +1,6 @@
-const express = require('express');
 const { Pool } = require('pg');
 const inquirer = require('inquirer')
 
-const app = express();
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 const pool = new Pool(
     {
@@ -17,7 +12,6 @@ const pool = new Pool(
     console.log(`Connected to company_db database.`)
 )
 
-pool.connect();
 
 const questions = [
     {
