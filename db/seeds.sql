@@ -1,10 +1,15 @@
-INSERT INTO department (name)
-VALUES  ('Engineering'),
-        ('Finance'), 
-        ('Legal'), 
-        ('Sales');
+DO $$
+DECLARE 
 
-INSERT INTO role (title, salary, department)
+BEGIN
+
+INSERT INTO department (id, name)
+VALUES  (1, 'Engineering'),
+        (2, 'Finance'), 
+        (3, 'Legal'), 
+        (4, 'Sales');
+
+INSERT INTO roles (title, salary, department)
 VALUES  ('Sales Lead', 100000, 4),
         ('Salesperson', 80000, 4),
         ('Lead Engineer', 150000, 1),
@@ -15,11 +20,20 @@ VALUES  ('Sales Lead', 100000, 4),
         ('Lawyer', 190000, 3);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES  ('Ebony', 'Olsen', 3),
-        ('Neil', 'Mcbride', 7),
-        ('Heyden', 'Powell', 4, 3)
-        ('Freyja', 'Hickman', 5),
-        ('Mia', 'Vega', 1),
+VALUES  ('Ebony', 'Olsen', 3, null),
+        ('Neil', 'Mcbride', 7, null),
+        ('Heyden', 'Powell', 4, 3),
+        ('Freyja', 'Hickman', 5, null),
+        ('Mia', 'Vega', 1, null),
         ('Bill', 'Farrell', 6, 5),
         ('Zaara', 'Yang', 8, 7),
         ('Nellie', 'Wall', 2, 1);
+
+RAISE NOTICE 'Seeds planted';
+
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE NOTICE 'An error occured: %', SQLERRM;
+        ROLLBACK;
+
+END $$;
