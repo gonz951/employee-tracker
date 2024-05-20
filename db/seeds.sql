@@ -4,14 +4,22 @@ VALUES  ('Engineering'),
         ('Legal'), 
         ('Sales');
 
-INSERT INTO role (id, title, salary, department)
-VALUES  (1, 'Sales Lead', 100000, 'Sales'),
-        (2, 'Salesperson', 80000, 'Sales'),
-        (3, 'Lead Engineer', 150000, 'Engineering'),
-        (4, 'Software Engineer', 120000, 'Engineering'),
-        (5, 'Accountant Manager', 160000, 'Finance'),
-        (6, 'Accountant', 125000, 'Finance'),
-        (7, 'Legal Team Lead', 250000, 'Legal'),
-        (8, 'Lawyer', 190000, 'Legal')
+INSERT INTO role (title, salary, department)
+VALUES  ('Sales Lead', 100000, 4),
+        ('Salesperson', 80000, 4),
+        ('Lead Engineer', 150000, 1),
+        ('Software Engineer', 120000, 1),
+        ('Accountant Manager', 160000, 2),
+        ('Accountant', 125000, 2),
+        ('Legal Team Lead', 250000, 3),
+        ('Lawyer', 190000, 3);
 
-INSERT INTO employee (id, first_name, last_name, 
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES  ('Ebony', 'Olsen', 3),
+        ('Neil', 'Mcbride', 7),
+        ('Heyden', 'Powell', 4, 3)
+        ('Freyja', 'Hickman', 5),
+        ('Mia', 'Vega', 1),
+        ('Bill', 'Farrell', 6, 5),
+        ('Zaara', 'Yang', 8, 7),
+        ('Nellie', 'Wall', 2, 1);
