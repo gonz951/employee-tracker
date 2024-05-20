@@ -63,27 +63,27 @@ function loadMainInquiries() {
             message: "What is the employee's role?",
             type: 'list',
             // should also end up having any roles added by the user
-            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant']
+            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
         },
         {
             name: 'employeeManager',
             message: "Who is this employee's manager?",
             type: 'list',
-            choices: [// should be filled with people i've made up]
+            choices: ['Ebony', 'Neil', 'Freyja', 'Mia']
         },
         {
             // if update employee role
             name: 'updateEmployee',
             message: "Which employee's role do you want to update?",
             type: 'list',
-            choices: [//the employees I've made up]
+            choices: ['Ebony', 'Neil', 'Heyden', 'Freyja', 'Mia', 'Bill', 'Zaara', 'Nellie']
         },
         {
             // continuation of update employee role: which role?
             name: 'updateEmployeeRl',
             message: "Which role do you want to assign the selected employee?",
             type: 'list',
-            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant']
+            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
         }
     ])
 }
