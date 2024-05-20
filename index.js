@@ -2,7 +2,6 @@ const express = require('express');
 const { Pool } = require('pg');
 const inquirer = require('inquirer')
 
-const PORT = 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -15,7 +14,7 @@ const pool = new Pool(
         host: 'localhost',
         database: 'company_db'
     },
-    console.log(`Connected to database.`)
+    console.log(`Connected to company_db database.`)
 )
 
 pool.connect();
@@ -94,3 +93,4 @@ const questions = [
         choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant']
     }
 ]
+
