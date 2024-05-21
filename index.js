@@ -17,29 +17,42 @@ function loadMainInquiries() {
             name: 'start',
             message: "What would you like to start with?",
             type: 'list',
-            choices: ['View all departments', 'View all roles', 'View all employees', 'Add department', 'Add role', 'Add employee', 'Update employee role', 'QUIT']
+            choices: ['View all departments', 'View all roles', 'View all employees', 'Add department', 'Add role', 'Add employee', 'Update employee role', 'QUIT'],
+
         },
+        // .then((userChoice) => {
+        //     console.log(userChoice);
+        //     const answer = new db()
+        //     if (userChoice == 'QUIT'){
+        //         return;
+        //     } else if (userChoice == 'View all departments'){
+        //         return answer.findAllDepartments();
+        //     } else if (userChoice == 'View all roles'){
+        //         return answer.findAllRoles();
+        //     } else if (userChoice == 'View all employees'){
+        //         return answer.findAllEmployees();
+        //     } else if (userChoice == 'Add department')
         {
             // if add department
-            name: 'department',
+            name: 'newDepartment',
             message: "Enter name for the department:",
             type: 'input'
         },
         {
             // if add role
-            name: 'role',
+            name: 'newRole',
             message: "Add a name for the role:",
             type: 'input'
         },
         {
             // continuation of add role: salary
-            name: 'roleSalary',
+            name: 'newRoleSal',
             message: "What is the salary of the role?",
             type: 'input'
         },
         {
             // continuation of add role: department
-            name: 'roleDepartment',
+            name: 'newRoleDep',
             message: "Which department does this role belong to?",
             type: 'list',
             // should also end up having any departments added by the user
@@ -85,5 +98,6 @@ function loadMainInquiries() {
             type: 'list',
             choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
         }
-    ])
+    
+    ]);
 }
