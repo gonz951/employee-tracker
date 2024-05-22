@@ -37,7 +37,13 @@ class DB {
 
     addDepartment() {
         return this.query(
-            `INSERT INTO department (name) VALUES (${newDepartment});`
+            `INSERT INTO department (name) VALUES (${this.answer});`
+        );
+    }
+
+    choiceRoles() {
+        return this.query(
+            'SELECT choices AS roles.title FROM roles FOR JSON PATH, WITHOUT_ARRAY_WRAPPER;'
         );
     }
 }
