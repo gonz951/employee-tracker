@@ -18,87 +18,26 @@ function loadMainInquiries() {
             message: "What would you like to start with?",
             type: 'list',
             choices: 
-            [{name: 'View all departments', 
+            [{ // viewing doesn't require additional questions
+                name: 'View all departments', 
                 value: 'findDepartments',
             }, {name: 'View all roles',
                 value: 'findRoles'
             }, {name: 'View all employees',
                 value: 'findEmployees'
-            }, {name: 'Add department',
-                value: 'addDepartment'
+            }, { // Adding/Updating requires additional questions
+                name: 'Add department',
+                value: 'addDepartment',
             }, {name: 'Add role',
-                value: 'addRole'
+                value: 'addRole',
+
             }, {name: 'Add employee',
                 value: 'addEmployee'
+
             }, {name: 'Update employee role',
-                value: 'updateEmpRole'}]
-        },
-        // {
-        //     // if add department
-        //     name: 'newDepartment',
-        //     message: "Enter name for the department:",
-        //     type: 'input'
-        // },
-        // {
-        //     // if add role
-        //     name: 'newRole',
-        //     message: "Add a name for the role:",
-        //     type: 'input'
-        // },
-        // {
-        //     // continuation of add role: salary
-        //     name: 'newRoleSal',
-        //     message: "What is the salary of the role?",
-        //     type: 'input'
-        // },
-        // {
-        //     // continuation of add role: department
-        //     name: 'newRoleDep',
-        //     message: "Which department does this role belong to?",
-        //     type: 'list',
-        //     // should also end up having any departments added by the user
-        //     choices: ['Engineering', 'Finance', 'Legal', 'Sales']
-        // },
-        // {
-        //     // if add employee
-        //     name: 'employeeFirst',
-        //     message: "What is the employee's first name?",
-        //     type: 'input'
-        // },
-        // {
-        //     // continuation of add employee: last name
-        //     name: 'employeeLast',
-        //     message: "What is the employee's last name?",
-        //     type: 'input'
-        // },
-        // {
-        //     // continuation of add employee: role
-        //     name: 'newEmployeeRole',
-        //     message: "What is the employee's role?",
-        //     type: 'list',
-        //     // should also end up having any roles added by the user
-        //     choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
-        // },
-        // {
-        //     name: 'employeeManager',
-        //     message: "Who is this employee's manager?",
-        //     type: 'list',
-        //     choices: ['Ebony', 'Neil', 'Freyja', 'Mia']
-        // },
-        // {
-        //     // if update employee role
-        //     name: 'updateEmployee',
-        //     message: "Which employee's role do you want to update?",
-        //     type: 'list',
-        //     choices: ['Ebony', 'Neil', 'Heyden', 'Freyja', 'Mia', 'Bill', 'Zaara', 'Nellie']
-        // },
-        // {
-        //     // continuation of update employee role: which role?
-        //     name: 'updateEmployeeRl',
-        //     message: "Which role do you want to assign the selected employee?",
-        //     type: 'list',
-        //     choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
-        // }
+                value: 'updateEmpRole'
+            }]
+        }
     
     ])
     .then((userData) => {
@@ -113,19 +52,83 @@ function loadMainInquiries() {
                 break;
 
             case 'findEmployees':
-                findAllEmployees();
+                //findAllEmployees();
                 break;
 
             case 'addDepartment':
-                // WIP
+                prompt([
+                    {
+                        name: 'newDepartment',
+                        message: "Enter a name for the department:",
+                        type: 'input'
+                    }
+                ])//.then((answer) => {addDepartment(answer)})
                 break;
 
             case 'addRole':
-                // WIP
+                prompt([
+                    {
+                        name: 'newRole',
+                        message: "Enter a name for the role:",
+                        type: 'input'
+                    },
+                    {
+                        name: 'roleSalary',
+                        message: "What is the salary for this role?",
+                        type: 'input'
+                    },
+                    {
+                        name: 'roleDepartment',
+                        message: "Which department does this role belong to?",
+                        type: 'list',
+                        choices: ['Engineering', 'Finance', 'Legal', 'Sales']
+                    }
+                ])
                 break;
 
             case 'addEmployee':
-                // WIP
+                prompt([
+                    {
+                        name: 'newEmployeeFirst',
+                        message: "Enter a first name for the employee:",
+                        type: 'input'
+                    },
+                    {
+                        name: 'newEmployeeLast',
+                        message: "Enter a last name for the employee:",
+                        type: 'input'
+                    },
+                    {
+                        name: 'newEmployeeRole',
+                        message: "What is the employee's role?",
+                        type: 'list',
+                        // should also end up having any roles added by the user
+                        choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
+                    },
+                    {
+                        name: 'employeeManager',
+                        message: "Who is this employee's manager?",
+                        type: 'list',
+                        choices: []
+                    }
+                ])
+                break;
+
+            case 'UpdateEmpRole':
+                prompt([
+                    {
+                        name: 'updateEmployee',
+                        message: "Which employee's role do you want to update?",
+                        type: 'list',
+                        choices: []
+                    },
+                    {
+                        name: 'updateEmployeeRl',
+                        message: "Which role do you want to assign the selected employee?",
+                        type: 'list',
+                        choices: []
+                    }
+                ])
                 break;
         
             default:
@@ -157,3 +160,8 @@ function findAllEmployees(){
         console.table(employees)
     }).then(() => loadMainInquiries())
 }
+
+function addDepartment(){
+    db.addDepartment().then
+}
+
