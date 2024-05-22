@@ -18,27 +18,21 @@ function loadMainInquiries() {
             message: "What would you like to start with?",
             type: 'list',
             choices: 
-            [{ // viewing doesn't require additional questions
-                name: 'View all departments', 
+            [{name: 'View all departments', 
                 value: 'findDepartments',
             }, {name: 'View all roles',
                 value: 'findRoles'
             }, {name: 'View all employees',
                 value: 'findEmployees'
-            }, { // Adding/Updating requires additional questions
-                name: 'Add department',
+            }, {name: 'Add department',
                 value: 'addDepartment',
             }, {name: 'Add role',
                 value: 'addRole',
-
             }, {name: 'Add employee',
                 value: 'addEmployee'
-
             }, {name: 'Update employee role',
-                value: 'updateEmpRole'
-            }]
+                value: 'updateEmpRole'}]
         }
-    
     ])
     .then((userData) => {
 
@@ -52,7 +46,7 @@ function loadMainInquiries() {
                 break;
 
             case 'findEmployees':
-                //findAllEmployees();
+                findAllEmployees();
                 break;
 
             case 'addDepartment':
@@ -62,7 +56,7 @@ function loadMainInquiries() {
                         message: "Enter a name for the department:",
                         type: 'input'
                     }
-                ])//.then((answer) => {addDepartment(answer)})
+                ]).then(({ answer }) => addDepartment());
                 break;
 
             case 'addRole':
@@ -103,13 +97,13 @@ function loadMainInquiries() {
                         message: "What is the employee's role?",
                         type: 'list',
                         // should also end up having any roles added by the user
-                        choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
+                        choices: [choiceRoles()]
                     },
                     {
                         name: 'employeeManager',
                         message: "Who is this employee's manager?",
                         type: 'list',
-                        choices: []
+                        choices: ['choice']
                     }
                 ])
                 break;
@@ -120,7 +114,7 @@ function loadMainInquiries() {
                         name: 'updateEmployee',
                         message: "Which employee's role do you want to update?",
                         type: 'list',
-                        choices: []
+                        choices: [choiceRoles()]
                     },
                     {
                         name: 'updateEmployeeRl',
@@ -135,6 +129,10 @@ function loadMainInquiries() {
                 break;
         }
     })
+}
+
+function choiceRoles(){
+    db.choiceRoles().then(JSON.parse())
 }
 
 function findAllDepartments(){
@@ -162,6 +160,9 @@ function findAllEmployees(){
 }
 
 function addDepartment(){
-    db.addDepartment().then
+    db.addDepartment().then(({ answer }) => {
+        let newDepartment = answer
+        console.log(`${newDepartment} department was created`);
+    }).then(() => loadMainInquiries())
 }
 
