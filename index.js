@@ -113,7 +113,7 @@ function loadMainInquiries() {
                 break;
 
             case 'findEmployees':
-                db.findAllEmployees();
+                findAllEmployees();
                 break;
 
             case 'addDepartment':
@@ -150,3 +150,10 @@ function findAllRoles(){
     }).then(() => loadMainInquiries())
 }
 
+function findAllEmployees(){
+    console.log('Found all employees')
+    db.findAllEmployees().then(({ rows }) => {
+        let employees = rows;
+        console.table(employees)
+    }).then(() => loadMainInquiries())
+}
