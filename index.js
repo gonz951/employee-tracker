@@ -50,13 +50,7 @@ function loadMainInquiries() {
                 break;
 
             case 'addDepartment':
-                prompt([
-                    {
-                        name: 'newDepartment',
-                        message: "Enter a name for the department:",
-                        type: 'input'
-                    }
-                ]).then(({ answer }) => addDepartment());
+                addDepartment();
                 break;
 
             case 'addRole':
@@ -160,9 +154,16 @@ function findAllEmployees(){
 }
 
 function addDepartment(){
-    db.addDepartment().then(({ answer }) => {
-        let newDepartment = answer
-        console.log(`${newDepartment} department was created`);
-    }).then(() => loadMainInquiries())
+    prompt([
+        {
+            name: 'newDepartment',
+            message: "Enter a name for the department:",
+            type: 'input'
+        }
+    ]).then(({ answer }) => {
+        db.addDepartment(answer);
+        console.log(`Added ${answer} department.`)
+    })
+    .then(() => loadMainInquiries())
 }
 
