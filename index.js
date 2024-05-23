@@ -161,8 +161,9 @@ function addDepartment(){
             type: 'input'
         }
     ]).then(({ answer }) => {
-        db.addDepartment(answer);
-        console.log(`Added ${answer} department.`)
+        let department = db.addDepartment(answer);
+        console.log(`Made ${department} department`)
+        return department;
     })
     .then(() => loadMainInquiries())
 }
