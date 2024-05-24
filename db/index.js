@@ -29,9 +29,9 @@ class DB {
 
     findAllEmployees() {
         return this.query(
-            // ! THIS ONE ISNT FINISHED OR WORKING
+            // ! THIS ONE ISNT FINISHED 
             // need to figure out how to show manager
-            'SELECT employee.first_name, employee.last_name, roles.title, department.name AS department, roles.salary FROM roles JOIN employee ON employee.role_id = roles.id JOIN department ON roles.department = department.id;'
+            'SELECT employee.first_name, employee.last_name, roles.title, department.name AS department, roles.salary, employee.last_name FROM roles JOIN employee ON employee.role_id = roles.id JOIN department ON roles.department = department.id;'
         );
     }
 
@@ -41,11 +41,29 @@ class DB {
         );
     }
 
-    choiceRoles() {
+    addRole() {
         return this.query(
-            'SELECT choices AS roles.title FROM roles FOR JSON PATH, WITHOUT_ARRAY_WRAPPER;'
+            `INSERT INTO roles (title, salary, department) VALUES (${this.title}, ${this.salary}, ${this.department});`
         );
     }
+
+    addEmployee() {
+        return this.query(
+            `INSERT INTO employee (first_name, last_name) VALUES (${this.first_name}, ${this.last_name}, ${this.role_id}, ${this.manager_id});`
+        );
+    }
+
+    updateEmployeeRole() {
+        return this.query(
+            ``
+        );
+    }
+    // * Obsolete until further notice
+    // choiceRoles() {
+    //     return this.query(
+    //         'SELECT choices AS roles.title FROM roles FOR JSON PATH, WITHOUT_ARRAY_WRAPPER;'
+    //     );
+    // }
 }
 
 module.exports = new DB();
