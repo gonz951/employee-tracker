@@ -9,7 +9,7 @@ The employee tracker acted as a way to play with PSQL, databases, seeds, etc. Wh
 
 ## Installation & Usage
 
-Due to the local nature of this project, a demonstration video will be provided instead:
+Due to the local nature of this project, a demonstration video will be provided instead: https://drive.google.com/file/d/1IutzMj1mc-hgtIpkFdJxA1jnw0QNqTLv/view 
 
 
 ## License
