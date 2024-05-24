@@ -54,79 +54,21 @@ function loadMainInquiries() {
                 break;
 
             case 'addRole':
-                prompt([
-                    {
-                        name: 'newRole',
-                        message: "Enter a name for the role:",
-                        type: 'input'
-                    },
-                    {
-                        name: 'roleSalary',
-                        message: "What is the salary for this role?",
-                        type: 'input'
-                    },
-                    {
-                        name: 'roleDepartment',
-                        message: "Which department does this role belong to?",
-                        type: 'list',
-                        choices: ['Engineering', 'Finance', 'Legal', 'Sales']
-                    }
-                ])
+                addRole();
                 break;
 
             case 'addEmployee':
-                prompt([
-                    {
-                        name: 'newEmployeeFirst',
-                        message: "Enter a first name for the employee:",
-                        type: 'input'
-                    },
-                    {
-                        name: 'newEmployeeLast',
-                        message: "Enter a last name for the employee:",
-                        type: 'input'
-                    },
-                    {
-                        name: 'newEmployeeRole',
-                        message: "What is the employee's role?",
-                        type: 'list',
-                        // should also end up having any roles added by the user
-                        choices: [choiceRoles()]
-                    },
-                    {
-                        name: 'employeeManager',
-                        message: "Who is this employee's manager?",
-                        type: 'list',
-                        choices: ['choice']
-                    }
-                ])
+                addEmployee();
                 break;
 
             case 'UpdateEmpRole':
-                prompt([
-                    {
-                        name: 'updateEmployee',
-                        message: "Which employee's role do you want to update?",
-                        type: 'list',
-                        choices: [choiceRoles()]
-                    },
-                    {
-                        name: 'updateEmployeeRl',
-                        message: "Which role do you want to assign the selected employee?",
-                        type: 'list',
-                        choices: []
-                    }
-                ])
+                updateEmployeeRole();
                 break;
         
             default:
                 break;
         }
     })
-}
-
-function choiceRoles(){
-    db.choiceRoles().then(JSON.parse())
 }
 
 function findAllDepartments(){
@@ -168,3 +110,71 @@ function addDepartment(){
     .then(() => loadMainInquiries())
 }
 
+function addRole(){
+    prompt([
+        {
+            name: 'newRole',
+            message: "Enter a name for the role:",
+            type: 'input'
+        },
+        {
+            name: 'roleSalary',
+            message: "What is the salary for this role?",
+            type: 'input'
+        },
+        {
+            name: 'roleDepartment',
+            message: "Which department does this role belong to?",
+            type: 'list',
+            choices: ['Engineering', 'Finance', 'Legal', 'Sales']
+        }
+    ])
+}
+
+function addEmployee(){
+    prompt([
+        {
+            name: 'newEmployeeFirst',
+            message: "Enter a first name for the employee:",
+            type: 'input'
+        },
+        {
+            name: 'newEmployeeLast',
+            message: "Enter a last name for the employee:",
+            type: 'input'
+        },
+        {
+            name: 'newEmployeeRole',
+            message: "What is the employee's role?",
+            type: 'list',
+            // ! Should have roles added by the user later
+            choices: []
+        },
+        {
+            name: 'employeeManager',
+            message: "Who is this employee's manager?",
+            type: 'list',
+            // ! Should pull from the user's seeds eventually
+            choices: ['Ebony', 'Neil', 'Freyja', 'Mia']
+        }
+    ])
+}
+
+function updateEmployeeRole(){
+    prompt([
+        {
+            name: 'updateEmployee',
+            message: "Which employee's role do you want to update?",
+            type: 'list',
+            // ! Should pull from the user's seeds eventually
+            choices: ['Ebony', 'Neil', 'Heyden', 'Freyja', 'Mia', 'Bill', 'Zaara', 'Nellie']
+        },
+        {
+            name: 'updateEmployeeRl',
+            message: "Which role do you want to assign the selected employee?",
+            type: 'list',
+            // ! Should have roles added by the user later
+            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer',]
+        }
+    ])
+}
