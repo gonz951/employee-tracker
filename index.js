@@ -102,9 +102,9 @@ function addDepartment(){
             message: "Enter a name for the department:",
             type: 'input'
         }
-    ]).then(({ answer }) => {
-        let department = db.addDepartment(answer);
-        console.log(`Made ${department} department`)
+    ]).then(({ newDepartment }) => {
+        console.log(newDepartment)
+        let department = db.addDepartment(newDepartment);
         return department;
     })
     .then(() => loadMainInquiries())
@@ -128,7 +128,11 @@ function addRole(){
             type: 'list',
             choices: ['Engineering', 'Finance', 'Legal', 'Sales']
         }
-    ])
+    ]).then(({ newRole, roleSalary, roleDepartment }) => {
+        let role = db.addRole(newRole, roleSalary, roleDepartment);
+        return role;
+    })
+    .then(() => loadMainInquiries())
 }
 
 function addEmployee(){

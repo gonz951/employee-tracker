@@ -35,15 +35,15 @@ class DB {
         );
     }
 
-    addDepartment() {
+    addDepartment(department) {
         return this.query(
-            `INSERT INTO department (name) VALUES (${this.answer});`
+            `INSERT INTO department (name) VALUES ($1)`, [department]
         );
     }
 
-    addRole() {
+    addRole(title, salary, department) {
         return this.query(
-            `INSERT INTO roles (title, salary, department) VALUES (${this.title}, ${this.salary}, ${this.department});`
+            `INSERT INTO roles (title, salary, department) VALUES ($1, CAST($2 AS INTEGER), $3)`, [title, salary, department]
         );
     }
 
@@ -58,6 +58,7 @@ class DB {
             ``
         );
     }
+
     // * Obsolete until further notice
     // choiceRoles() {
     //     return this.query(
