@@ -128,11 +128,11 @@ function addRole(){
             type: 'list',
             choices: ['Engineering', 'Finance', 'Legal', 'Sales']
         }
-    ]).then(({ newRole, roleSalary, roleDepartment }) => {
-        let role = db.addRole(newRole, roleSalary, roleDepartment);
-        return role;
-    })
-    .then(() => loadMainInquiries())
+    ])//.then(({ newRole, roleSalary, roleDepartment }) => {
+    //     let role = db.addRole(newRole, roleSalary, roleDepartment);
+    //     return role;
+    // })
+    // .then(() => loadMainInquiries())
 }
 
 function addEmployee(){

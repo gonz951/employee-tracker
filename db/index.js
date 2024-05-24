@@ -41,15 +41,15 @@ class DB {
         );
     }
 
-    addRole(title, salary, department) {
+    addRole(title, salary, dep) {
         return this.query(
-            `INSERT INTO roles (title, salary, department) VALUES ($1, CAST($2 AS INTEGER), $3)`, [title, salary, department]
+            `INSERT INTO roles (title, salary, department) VALUES ($2, CAST($3 AS INTEGER), $4)`, [title, salary, dep]
         );
     }
 
-    addEmployee() {
+    addEmployee(first_name, last_name, role_id, manager_id) {
         return this.query(
-            `INSERT INTO employee (first_name, last_name) VALUES (${this.first_name}, ${this.last_name}, ${this.role_id}, ${this.manager_id});`
+            `INSERT INTO employee (first_name, last_name) VALUES ($5, $6, $7, $8)`, [first_name, last_name, role_id, manager_id]
         );
     }
 
