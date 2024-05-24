@@ -148,7 +148,7 @@ function addEmployee(){
             message: "What is the employee's role?",
             type: 'list',
             // ! Should have roles added by the user later
-            choices: []
+            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
         },
         {
             name: 'employeeManager',
@@ -174,7 +174,7 @@ function updateEmployeeRole(){
             message: "Which role do you want to assign the selected employee?",
             type: 'list',
             // ! Should have roles added by the user later
-            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer',]
+            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant Manager', 'Accountant', 'Legal Team Lead', 'Lawyer']
         }
     ])
 }
