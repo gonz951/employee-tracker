@@ -3,11 +3,11 @@ DECLARE
 
 BEGIN
 
-INSERT INTO department (id, name)
-VALUES  (1, 'Engineering'),
-        (2, 'Finance'), 
-        (3, 'Legal'), 
-        (4, 'Sales');
+INSERT INTO department (name)
+VALUES  ('Engineering'),
+        ('Finance'), 
+        ('Legal'), 
+        ('Sales');
 
 INSERT INTO roles (title, salary, department)
 VALUES  ('Sales Lead', 100000, 4),
